@@ -1,10 +1,9 @@
 import { notFound } from "next/navigation";
 
-const URL = process.env.API_URL;
 export const PAGE_SIZE = 8;
 
 export async function SendUserEmail(mailData) {
-  const res = await fetch(`${URL}/api/v1/sendEmail`, {
+  const res = await fetch(`${process.env.RENDER_URL}/api/v1/sendEmail`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -24,7 +23,9 @@ export async function getClients(page) {
   // pagination
   const pageString = `page=${page}&limit=${PAGE_SIZE}`;
 
-  const res = await fetch(`${URL}/api/v1/clients/?${pageString}`);
+  const res = await fetch(
+    `${process.env.RENDER_URL}/api/v1/clients/?${pageString}`
+  );
 
   if (!res.ok) {
     throw new Error("Something went wrong, try again later");
@@ -35,7 +36,9 @@ export async function getClients(page) {
 }
 
 export async function getClient(slug) {
-  const res = await fetch(`${URL}/api/v1/clients/client/${slug}`);
+  const res = await fetch(
+    `${process.env.RENDER_URL}/api/v1/clients/client/${slug}`
+  );
 
   if (!res.ok) {
     const data = await res.json();
@@ -50,7 +53,9 @@ export async function getClient(slug) {
 export async function getGallery(type, page) {
   const pageString = `&page=${page}&limit=${PAGE_SIZE}`;
 
-  const res = await fetch(`${URL}/api/v1/gallery?type=${type}${pageString}`);
+  const res = await fetch(
+    `${process.env.RENDER_URL}/api/v1/gallery?type=${type}${pageString}`
+  );
 
   if (!res.ok) {
     throw new Error("Something went wrong, try again later");

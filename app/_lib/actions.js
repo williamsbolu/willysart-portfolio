@@ -3,7 +3,7 @@
 import { redirect } from "next/navigation";
 
 export async function sendEmail(emailInfo) {
-  const res = await fetch(`${process.env.API_URL}/api/v1/sendEmail`, {
+  const res = await fetch(`${process.env.RENDER_URL}/api/v1/sendEmail`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
