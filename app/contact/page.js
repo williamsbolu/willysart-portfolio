@@ -3,8 +3,6 @@ import { AiOutlineInstagram, AiOutlineTwitter } from "react-icons/ai";
 import { BiLogoFacebook } from "react-icons/bi";
 import ContactForm from "@/app/_components/ui/ContactForm";
 
-export const revalidate = 2592000; // 1 month
-
 export const metadata = {
   title: "Contact",
 };

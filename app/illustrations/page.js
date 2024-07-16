@@ -1,6 +1,8 @@
 import Gallery from "@/app/_components/gallery/Gallery";
 import { getGallery } from "../_lib/data-service";
 
+export const revalidate = 0;
+
 export const metadata = {
   title: "Illustrations",
 };

@@ -1,5 +1,7 @@
 import ClientDetail from "@/app/_components/client/ClientDetail";
-import { getClient } from "@/app/_lib/data-service";
+import { getClient, getClients } from "@/app/_lib/data-service";
+
+export const revalidate = 0;
 
 export async function generateMetadata({ params }) {
   const client = await getClient(params.workId);
@@ -12,6 +14,16 @@ export async function generateMetadata({ params }) {
   return {
     title: `${metaText}`,
   };
+}
+
+export async function generateStaticParams() {
+  const clients = await getClients();
+
+  const ids = clients.data.map((client) => ({
+    workId: client.slug,
+  }));
+
+  return ids;
 }
 
 export default async function Page({ params }) {
